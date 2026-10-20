@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Presets Exclusivos M-VAVE Cubebaby Bass</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050810;
+  --surface: #0a0e1a;
+  --surface2: #0f1525;
+  --border: #1a2240;
+  --blue: #1e90ff;
+  --blue2: #0055cc;
+  --orange: #ff6a00;
+  --orange2: #ff9500;
+  --cyan: #00cfff;
+  --text: #f0f4ff;
+  --text2: #8899cc;
+  --green: #22c55e;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+/* NOISE TEXTURE */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 24px 60px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(30,144,255,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255,106,0,0.12) 0%, transparent 60%),
+    var(--bg);
+}
+
+/* Grid lines */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(30,144,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,144,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.mvave-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(30,144,255,0.1); border: 1px solid rgba(30,144,255,0.35);
+  border-radius: 6px; padding: 6px 16px; font-size: 12px; font-weight: 700;
+  color: var(--cyan); margin-bottom: 24px; letter-spacing: 2px; text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 11vw, 96px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+.hero h1 .line1 { color: var(--text); display: block; }
+.hero h1 .line2 {
+  display: block;
+  background: linear-gradient(90deg, var(--orange), var(--orange2), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero h1 .line3 { color: var(--text); display: block; font-size: 0.55em; letter-spacing: 4px; margin-top: 8px; }
+
+.hero-sub {
+  font-size: clamp(15px, 2.5vw, 18px); color: var(--text2);
+  max-width: 500px; margin: 24px auto 0; line-height: 1.6;
+  position: relative; z-index: 1;
+}
+
+.cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 44px; position: relative; z-index: 1; }
+
+.btn-fire {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, var(--orange), var(--orange2));
+  color: #fff; font-weight: 800; font-size: 18px;
+  padding: 18px 44px; border-radius: 6px; text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 40px rgba(255,106,0,0.4), 0 8px 24px rgba(255,106,0,0.3);
+  border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  width: 100%; max-width: 380px;
+}
+.btn-fire:hover { transform: translateY(-3px); box-shadow: 0 0 60px rgba(255,106,0,0.5), 0 12px 32px rgba(255,106,0,0.4); }
+
+.cta-note { font-size: 13px; color: var(--text2); }
+.cta-note strong { color: var(--green); }
+
+/* SCAN LINE animada */
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  animation: scan 4s linear infinite; opacity: 0.3; pointer-events: none;
+}
+@keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+/* SECTION BASE */
+section { position: relative; z-index: 1; }
+.section-wrap { max-width: 860px; margin: 0 auto; padding: 80px 24px; }
+.eyebrow { font-size: 11px; font-weight: 700; color: var(--cyan); letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px; }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 6vw, 52px); font-weight: 900; text-transform: uppercase;
+  line-height: 1.05; letter-spacing: -0.5px;
+}
+.section-title em { font-style: normal; color: var(--orange2); }
+
+/* PRESETS GRID */
+.presets-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.presets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 40px; }
+
+.preset-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 22px 18px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.preset-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.preset-card.blue::before { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+.preset-card.orange::before { background: linear-gradient(90deg, var(--orange), var(--orange2)); }
+.preset-card:hover { transform: translateY(-3px); border-color: #2a3560; }
+
+.preset-icon { font-size: 28px; }
+.preset-num {
+  position: absolute; top: 14px; right: 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px; font-weight: 900; opacity: 0.08; color: var(--text);
+}
+.preset-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.preset-name.blue { color: var(--cyan); }
+.preset-name.orange { color: var(--orange2); }
+.preset-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+/* COMPARE */
+.compare-section { background: var(--bg); }
+.compare-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin-top: 40px; }
+.compare-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 22px; text-align: center;
+}
+.compare-card.after { border-color: rgba(255,149,0,0.4); background: rgba(255,106,0,0.04); }
+.compare-emoji { font-size: 40px; margin-bottom: 14px; }
+.compare-label { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.compare-label.bad { color: var(--text2); }
+.compare-label.good { color: var(--orange2); }
+.compare-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+.vs-badge {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900;
+  color: var(--orange); text-align: center;
+  text-shadow: 0 0 20px rgba(255,106,0,0.5);
+}
+
+/* STATS */
+.stats-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats-row { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 56px; font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--orange), var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 13px; color: var(--text2); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+/* PRICING */
+.pricing-section { background: var(--bg); }
+.price-card {
+  background: var(--surface2);
+  border: 1px solid rgba(255,106,0,0.4);
+  border-radius: 16px; padding: 44px 36px;
+  max-width: 500px; margin: 40px auto 0;
+  position: relative;
+  box-shadow: 0 0 80px rgba(255,106,0,0.08), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.price-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--orange), var(--orange2));
+  color: #fff; font-size: 12px; font-weight: 800;
+  padding: 5px 20px; border-radius: 4px; white-space: nowrap; letter-spacing: 1px; text-transform: uppercase;
+}
+.price-amount {
+  text-align: center; margin-bottom: 28px;
+}
+.price-currency { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--text2); vertical-align: top; line-height: 1.4; }
+.price-value { font-family: 'Barlow Condensed', sans-serif; font-size: 80px; font-weight: 900; color: var(--orange2); line-height: 1; }
+.price-sub { font-size: 13px; color: var(--text2); margin-top: 4px; }
+
+.checklist { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.5; }
+.check-ico { color: var(--green); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+.btn-fire-lg {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(135deg, var(--orange), var(--orange2));
+  color: #fff; font-weight: 800; font-size: 20px;
+  padding: 20px 32px; border-radius: 6px; text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 40px rgba(255,106,0,0.4);
+  width: 100%; border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.btn-fire-lg:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(255,106,0,0.5); }
+
+.secure-note { text-align: center; margin-top: 16px; font-size: 13px; color: var(--text2); display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-whats {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25D366; color: #fff; font-weight: 700; font-size: 16px;
+  padding: 15px 32px; border-radius: 6px; text-decoration: none;
+  margin-top: 14px; transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
+
+/* FAQ */
+.faq-section { background: var(--surface); border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 20px 0; font-size: 15px; font-weight: 600; color: var(--text);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; font-family: 'Inter', sans-serif;
+}
+.faq-q .arrow { color: var(--orange2); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+.faq-q.open .arrow { transform: rotate(45deg); }
+.faq-a { display: none; padding-bottom: 20px; font-size: 14px; color: var(--text2); line-height: 1.7; }
+.faq-a.open { display: block; }
+
+/* FOOTER */
+footer {
+  padding: 40px 24px; text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--text2);
+  background: var(--bg);
+}
+footer strong { color: var(--cyan); }
+
+/* FLOAT BTN */
+.float-cta {
+  position: fixed; bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 50%; transform: translateX(-50%);
+  z-index: 999; width: calc(100% - 48px); max-width: 400px;
+}
+.float-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(135deg, var(--orange), var(--orange2));
+  color: #fff; font-weight: 800; font-size: 15px;
+  padding: 15px 28px; border-radius: 6px; text-decoration: none;
+  box-shadow: 0 0 30px rgba(255,106,0,0.5);
+  transition: transform 0.15s;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.float-btn:hover { transform: translateY(-2px); }
+
+@media (max-width: 560px) {
+  .compare-grid { grid-template-columns: 1fr; }
+  .vs-badge { transform: rotate(90deg); }
+  .stats-row { gap: 36px; }
+  .presets-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="scan-line"></div>
+  <div class="mvave-badge">⚡ M-VAVE Cubebaby · Exclusivo</div>
+  <h1>
+    <span class="line1">Transforme</span>
+    <span class="line2">Seu Timbre!</span>
+    <span class="line3">Pré-sets exclusivos para M-Vave Cubebaby Bass</span>
+  </h1>
+  <p class="hero-sub">8 presets prontos, criados por baixista profissional. Som encorpado, definido e pronto para o palco — com 1 clique.</p>
+  <div class="cta-group">
+    <a href="https://pay.kiwify.com.br/EUNlpa1" class="btn-fire">🔥 Quero meus presets agora</a>
+    <span class="cta-note">Acesso imediato · <strong>Acesso vitalício</strong> · R$30 uma vez só</span>
+  </div>
+</section>
+
+<!-- PRESETS -->
+<section class="presets-section">
+  <div class="section-wrap">
+    <div class="eyebrow">O que você recebe</div>
+    <div class="section-title">8 presets.<br><em>Cada um com sua missão.</em></div>
+    <div class="presets-grid">
+      <div class="preset-card blue">
+        <span class="preset-num">01</span>
+        <div class="preset-icon">💧</div>
+        <div class="preset-name blue">Clean</div>
+        <div class="preset-desc">Timbre cristalino e puro. Para quando o groove fala mais alto.</div>
+      </div>
+      <div class="preset-card blue">
+        <span class="preset-num">02</span>
+        <div class="preset-icon">🎵</div>
+        <div class="preset-name blue">Groove</div>
+        <div class="preset-desc">Sustentação e definição para a base. O baixo que o músico sente.</div>
+      </div>
+      <div class="preset-card blue">
+        <span class="preset-num">03</span>
+        <div class="preset-icon">🤚</div>
+        <div class="preset-name blue">Slap</div>
+        <div class="preset-desc">Ponta e ataque definidos. Percussivo, brilhante e presente.</div>
+      </div>
+      <div class="preset-card blue">
+        <span class="preset-num">04</span>
+        <div class="preset-icon">☁️</div>
+        <div class="preset-name blue">Ambience Bass</div>
+        <div class="preset-desc">Vasto e envolvente. Preenche o espaço com presença e atmosfera.</div>
+      </div>
+      <div class="preset-card orange">
+        <span class="preset-num">05</span>
+        <div class="preset-icon">🔥</div>
+        <div class="preset-name orange">Drive 1</div>
+        <div class="preset-desc">Saturação suave e calor. Distorção que adiciona corpo sem perder definição.</div>
+      </div>
+      <div class="preset-card orange">
+        <span class="preset-num">06</span>
+        <div class="preset-icon">🔥</div>
+        <div class="preset-name orange">Drive 2</div>
+        <div class="preset-desc">Ganho e peso agressivo. Para os momentos de mais intensidade no palco.</div>
+      </div>
+      <div class="preset-card orange">
+        <span class="preset-num">07</span>
+        <div class="preset-icon">🔥〰️</div>
+        <div class="preset-name orange">Drive + Chorus</div>
+        <div class="preset-desc">Massa e modulação espacial. Drive com profundidade e movimento.</div>
+      </div>
+      <div class="preset-card orange">
+        <span class="preset-num">08</span>
+        <div class="preset-icon">⏱️</div>
+        <div class="preset-name orange">Delay</div>
+        <div class="preset-desc">Ecos e repetições rítmicas. Para criar texturas e linhas melódicas únicas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="compare-section">
+  <div class="section-wrap">
+    <div class="eyebrow">A transformação</div>
+    <div class="section-title">Antes e depois<br><em>do preset</em></div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-emoji">😓</div>
+        <div class="compare-label bad">Sem preset</div>
+        <div class="compare-desc">Som cru, sem personalidade. Horas tentando configurar e o resultado ainda não convence no palco.</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="compare-card after">
+        <div class="compare-emoji">🔥</div>
+        <div class="compare-label good">Com Cubebaby Presets</div>
+        <div class="compare-desc">Timbre encorpado, definido e pronto para o show. 1 clique e você está no som certo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="section-wrap" style="padding: 60px 24px;">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Baixistas atendidos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Presets exclusivos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Clique para ativar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Acesso vitalício</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="section-wrap">
+    <div class="eyebrow" style="text-align:center">Investimento</div>
+    <div class="section-title" style="text-align:center">Simples e direto.<br><em>Uma vez só.</em></div>
+    <div class="price-card">
+      <div class="price-badge">🔥 OFERTA DE LANÇAMENTO</div>
+      <div class="price-amount">
+        <span class="price-currency">R$</span><span class="price-value">30</span>
+        <div class="price-sub">pagamento único · acesso vitalício</div>
+      </div>
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">✓</span> 8 presets exclusivos para M-VAVE Cubebaby</div>
+        <div class="check-item"><span class="check-ico">✓</span> Clean, Groove, Slap e Ambience Bass</div>
+        <div class="check-item"><span class="check-ico">✓</span> Drive 1, Drive 2, Drive+Chorus e Delay</div>
+        <div class="check-item"><span class="check-ico">✓</span> Acesso vitalício</div>
+        <div class="check-item"><span class="check-ico">✓</span> Entrega imediata no e-mail</div>
+        <div class="check-item"><span class="check-ico">✓</span> Suporte direto com o criador</div>
+      </div>
+      <a href="https://pay.kiwify.com.br/EUNlpa1" class="btn-fire-lg">🎸 Garantir meus presets agora</a>
+      <div class="secure-note">🔒 Pagamento 100% seguro via Kiwify</div>
+      <a href="https://wa.me/5564996771007?text=Ol%C3%A1%20Fl%C3%A1vio%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20os%20Presets%20Cubebaby%20Bass!" target="_blank" class="btn-whats">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.523 5.85L.057 23.571a.5.5 0 0 0 .613.601l5.927-1.54A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.502-5.187-1.381l-.372-.217-3.854 1.002 1.028-3.735-.237-.386A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Tirar dúvidas no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-wrap">
+    <div class="eyebrow">Dúvidas</div>
+    <div class="section-title" style="margin-bottom:36px">Perguntas<br><em>frequentes</em></div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Para qual pedal esses presets funcionam? <span class="arrow">+</span></button>
+      <div class="faq-a">Os presets foram criados exclusivamente para o <strong>M-VAVE Cubebaby Bass</strong>. Você precisa ter esse pedal para utilizar os arquivos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Como recebo os presets após a compra? <span class="arrow">+</span></button>
+      <div class="faq-a">Imediatamente após o pagamento você recebe um e-mail com o link de acesso. Todo o processo é automático — sem precisar aguardar.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">É difícil instalar os presets no pedal? <span class="arrow">+</span></button>
+      <div class="faq-a">Não! O processo é simples — você baixa o arquivo e importa para o pedal. Se tiver dúvida, pode me chamar diretamente que te ajudo no passo a passo.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer estilo musical? <span class="arrow">+</span></button>
+      <div class="faq-a">Sim! Os 8 presets cobrem os estilos mais usados no palco: sons limpos, groove, slap, drive, chorus e efeitos especiais. Ideal para banda baile, gospel, cover e muito mais.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Tem suporte se eu tiver dúvidas? <span class="arrow">+</span></button>
+      <div class="faq-a">Sim! Você tem suporte direto comigo — baixista profissional que criou cada preset. É só me chamar que respondo pessoalmente.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Criado por <strong>Flávio Heleno</strong> · Baixista profissional · M-VAVE Cubebaby Specialist</p>
+  <p style="margin-top:8px;font-size:12px">© 2026 · Todos os direitos reservados</p>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="float-cta">
+  <a href="https://pay.kiwify.com.br/EUNlpa1" class="float-btn">🔥 Garantir presets — R$30</a>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(q => { q.classList.remove('open'); q.nextElementSibling.classList.remove('open'); });
+  if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+}
+</script>
+</body>
+</html>
